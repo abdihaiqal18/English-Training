@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lembar Latihan — TOEFL ITP Pribadi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEAE0;
+    --paper-2:#E6E0D2;
+    --ink:#20242B;
+    --ink-soft:#4B5160;
+    --rule:#C9C2AE;
+    --accent:#3B6E5E;
+    --accent-dark:#23453A;
+    --accent-tint:#DCE7E1;
+    --wrong:#A6432E;
+    --wrong-tint:#F3E1DC;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3,.display{
+    font-family:'Zilla Slab', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--accent-dark);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  /* header */
+  header{
+    border-bottom:2px solid var(--ink);
+    padding:18px 0;
+    background:var(--paper);
+    position:sticky;top:0;z-index:50;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand .stamp{
+    font-family:'IBM Plex Mono';
+    font-size:11px;
+    letter-spacing:.08em;
+    border:1px solid var(--ink);
+    border-radius:100px;
+    padding:2px 9px;
+    color:var(--ink-soft);
+  }
+  .brand h1{font-size:20px;}
+  nav{display:flex;gap:22px;font-size:14px;}
+  nav a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;}
+  nav a:hover{color:var(--ink);border-bottom-color:var(--ink);}
+
+  /* hero */
+  .hero{padding:64px 0 48px;border-bottom:1px solid var(--rule);}
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent-dark);margin-bottom:14px;display:block;
+  }
+  .hero h2{font-size:38px;line-height:1.15;max-width:620px;}
+  .hero p.lead{font-size:17px;color:var(--ink-soft);max-width:520px;margin:18px 0 28px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Source Sans 3';font-size:15px;font-weight:600;
+    padding:12px 22px;border-radius:var(--radius);border:1.5px solid var(--ink);
+    cursor:pointer;text-decoration:none;display:inline-block;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--paper-2);}
+
+  /* scantron signature graphic */
+  .sheet{
+    margin-top:40px;border:1.5px solid var(--ink);background:#fff;
+    padding:20px 24px;max-width:420px;
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .sheet .sheet-head{
+    display:flex;justify-content:space-between;font-family:'IBM Plex Mono';
+    font-size:11px;color:var(--ink-soft);border-bottom:1px dashed var(--rule);
+    padding-bottom:10px;margin-bottom:12px;
+  }
+  .bubble-row{display:flex;align-items:center;gap:14px;padding:6px 0;font-family:'IBM Plex Mono';font-size:13px;}
+  .bubble-row .qn{width:18px;color:var(--ink-soft);}
+  .bubble{width:16px;height:16px;border-radius:50%;border:1.3px solid var(--ink);display:inline-block;}
+  .bubble.filled{background:var(--ink);}
+
+  /* sections overview */
+  .section-overview{padding:56px 0;border-bottom:1px solid var(--rule);}
+  .section-overview .kicker{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;}
+  .section-overview h3{font-size:24px;margin-top:8px;margin-bottom:28px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{
+    border:1px solid var(--ink);background:#fff;padding:18px;position:relative;
+  }
+  .card .num{
+    font-family:'IBM Plex Mono';font-size:12px;color:var(--accent-dark);
+    border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:10px;display:block;
+  }
+  .card h4{font-family:'Zilla Slab';font-size:17px;font-weight:600;margin:0 0 6px;}
+  .card p{font-size:13.5px;color:var(--ink-soft);margin:0 0 14px;}
+  .card button{width:100%;}
+
+  /* practice app */
+  .practice{padding:56px 0 80px;}
+  .practice .kicker{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;}
+  .practice h3{font-size:24px;margin:8px 0 28px;}
+
+  .picker{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+  .picker button{
+    font-family:'IBM Plex Mono';font-size:13px;padding:9px 16px;border:1px solid var(--ink);
+    background:#fff;cursor:pointer;border-radius:100px;
+  }
+  .picker button.active{background:var(--ink);color:var(--paper);}
+
+  .quiz-frame{border:1px solid var(--ink);background:#fff;padding:28px;display:none;}
+  .quiz-frame.active{display:block;}
+  .quiz-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed var(--rule);padding-bottom:14px;margin-bottom:20px;}
+  .quiz-top .label{font-family:'Zilla Slab';font-size:18px;font-weight:600;}
+  .timer{font-family:'IBM Plex Mono';font-size:18px;padding:4px 12px;border:1px solid var(--ink);border-radius:100px;}
+  .timer.low{color:var(--wrong);border-color:var(--wrong);}
+
+  .passage{
+    background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;margin-bottom:20px;
+    font-size:14.5px;max-height:220px;overflow-y:auto;
+  }
+  .passage h5{font-family:'Zilla Slab';font-size:14px;margin:0 0 8px;color:var(--accent-dark);}
+
+  .question{border-bottom:1px solid var(--rule);padding:18px 0;}
+  .question:first-of-type{padding-top:0;}
+  .question:last-of-type{border-bottom:none;}
+  .qtext{display:flex;gap:10px;font-size:15px;margin-bottom:12px;}
+  .qtext .qn{font-family:'IBM Plex Mono';color:var(--accent-dark);min-width:22px;}
+  .options{display:grid;gap:8px;padding-left:32px;}
+  .option{
+    display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14.5px;
+    padding:6px 8px;border-radius:var(--radius);
+  }
+  .option:hover{background:var(--paper-2);}
+  .option .ov{
+    width:20px;height:20px;border-radius:50%;border:1.3px solid var(--ink);flex:none;
+    display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:11px;
+  }
+  .option.selected .ov{background:var(--ink);color:var(--paper);}
+  .option.correct .ov{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .option.incorrect .ov{background:var(--wrong);border-color:var(--wrong);color:#fff;}
+
+  .quiz-actions{display:flex;justify-content:space-between;align-items:center;margin-top:24px;}
+  .progress-text{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--ink-soft);}
+
+  .result{display:none;text-align:center;padding:36px 0;}
+  .result.active{display:block;}
+  .result .score{font-family:'IBM Plex Mono';font-size:56px;color:var(--accent-dark);margin:8px 0;}
+  .result p{color:var(--ink-soft);}
+
+  .history{margin-top:36px;}
+  .history h4{font-family:'Zilla Slab';font-size:16px;margin:0 0 10px;}
+  .history table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .history th,.history td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--rule);}
+  .history th{font-family:'IBM Plex Mono';font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+  .history .empty{color:var(--ink-soft);font-style:italic;padding:10px 0;}
+
+  footer{border-top:2px solid var(--ink);padding:26px 0;font-size:13px;color:var(--ink-soft);}
+  footer .wrap{display:flex;justify-content:space-between;}
+
+  .note{
+    background:var(--accent-tint);border-left:3px solid var(--accent);padding:12px 16px;
+    font-size:13.5px;color:var(--accent-dark);margin-bottom:24px;
+  }
+
+  @media (max-width:720px){
+    .cards{grid-template-columns:1fr;}
+    .hero h2{font-size:29px;}
+    header .wrap{flex-direction:column;gap:10px;align-items:flex-start;}
+    nav{flex-wrap:wrap;gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <h1>Lembar Latihan</h1>
+      <span class="stamp">TOEFL ITP · pribadi</span>
+    </div>
+    <nav>
+      <a href="#tentang">Tentang</a>
+      <a href="#bagian">Bagian tes</a>
+      <a href="#latihan">Latihan</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="tentang">
+  <div class="wrap">
+    <span class="eyebrow">Ruang belajar mandiri</span>
+    <h2>Latihan TOEFL ITP, di jadwalmu sendiri.</h2>
+    <p class="lead">Isi lembar jawaban seperti ujian aslinya — pilih bagian, jalankan timer, lalu lihat langsung skor dan pembahasannya. Tanpa akun, tanpa biaya, datanya tersimpan di browser ini saja.</p>
+    <div class="hero-actions">
+      <a href="#latihan" class="btn btn-primary">Mulai latihan</a>
+      <a href="#bagian" class="btn btn-ghost">Lihat bagian tes</a>
+    </div>
+
+    <div class="sheet" aria-hidden="true">
+      <div class="sheet-head"><span>LEMBAR JAWABAN</span><span>SECTION 2</span></div>
+      <div class="bubble-row"><span class="qn">01</span><span class="bubble"></span><span class="bubble filled"></span><span class="bubble"></span><span class="bubble"></span></div>
+      <div class="bubble-row"><span class="qn">02</span><span class="bubble filled"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div>
+      <div class="bubble-row"><span class="qn">03</span><span class="bubble"></span><span class="bubble"></span><span class="bubble filled"></span><span class="bubble"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-overview" id="bagian">
+  <div class="wrap">
+    <span class="kicker">Struktur tes</span>
+    <h3>Tiga bagian, urut seperti TOEFL ITP asli</h3>
+    <div class="cards">
+      <div class="card">
+        <span class="num">Section 1</span>
+        <h4>Listening comprehension</h4>
+        <p>Simulasi berbasis transkrip percakapan pendek — placeholder, ganti dengan audio dan naskahmu sendiri.</p>
+        <button class="btn btn-ghost" onclick="selectSection('listening')">Buka bagian ini</button>
+      </div>
+      <div class="card">
+        <span class="num">Section 2</span>
+        <h4>Structure &amp; written expression</h4>
+        <p>Melengkapi kalimat dan menemukan kesalahan tata bahasa dalam kalimat yang sudah jadi.</p>
+        <button class="btn btn-ghost" onclick="selectSection('structure')">Buka bagian ini</button>
+      </div>
+      <div class="card">
+        <span class="num">Section 3</span>
+        <h4>Reading comprehension</h4>
+        <p>Satu bacaan pendek dengan beberapa pertanyaan pemahaman, isi, dan inferensi.</p>
+        <button class="btn btn-ghost" onclick="selectSection('reading')">Buka bagian ini</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practice" id="latihan">
+  <div class="wrap">
+    <span class="kicker">Kerjakan sekarang</span>
+    <h3>Pilih bagian, lalu jawab seperti ujian sungguhan</h3>
+
+    <div class="note">Soal di bawah ini contoh placeholder untuk latihan format dan alur pengerjaan. Ganti isi soal, bacaan, dan kunci jawaban langsung di kode <span class="mono">questionBank</span> pada file ini dengan materi milikmu sendiri.</div>
+
+    <div class="picker">
+      <button data-sec="listening" onclick="selectSection('listening')">Listening</button>
+      <button data-sec="structure" onclick="selectSection('structure')">Structure &amp; written expression</button>
+      <button data-sec="reading" onclick="selectSection('reading')">Reading</button>
+    </div>
+
+    <div class="quiz-frame" id="quizFrame">
+      <div class="quiz-top">
+        <span class="label" id="quizLabel">—</span>
+        <span class="timer mono" id="timer">00:00</span>
+      </div>
+      <div class="passage" id="passageBox" style="display:none;"></div>
+      <div id="questionList"></div>
+      <div class="quiz-actions">
+        <span class="progress-text" id="progressText">0 / 0 dijawab</span>
+        <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()">Kumpulkan jawaban</button>
+      </div>
+    </div>
+
+    <div class="result" id="resultBox">
+      <span class="mono" style="font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;">Hasil</span>
+      <div class="score mono" id="scoreText">0/0</div>
+      <p id="resultDetail"></p>
+      <button class="btn btn-ghost" onclick="reviewAnswers()">Lihat pembahasan</button>
+      <button class="btn btn-primary" onclick="restartCurrent()">Ulangi bagian ini</button>
+    </div>
+
+    <div class="history">
+      <h4>Riwayat latihan</h4>
+      <table id="historyTable">
+        <thead><tr><th>Tanggal</th><th>Bagian</th><th>Skor</th><th>Durasi</th></tr></thead>
+        <tbody id="historyBody"><tr><td colspan="4" class="empty">Belum ada riwayat. Kerjakan satu bagian untuk mulai mencatat progres.</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Lembar Latihan TOEFL ITP — dipakai untuk belajar pribadi.</span>
+    <span>Data tersimpan lokal di browser ini.</span>
+  </div>
+</footer>
+
+<script>
+const questionBank = {
+  listening: {
+    title: "Listening comprehension",
+    timeLimit: 300,
+    passage: {
+      heading: "Transkrip percakapan (contoh placeholder)",
+      text: "Man: Have you finished reading the material for tomorrow's seminar? Woman: Not yet, I got held up at the library trying to find a reference book. Man: You can borrow mine tonight if that helps."
+    },
+    questions: [
+      { q: "What does the woman mean?", options: ["She finished the reading early.", "She was delayed while searching for a book.", "She does not want to attend the seminar.", "She already borrowed the man's book."], correct: 1 },
+      { q: "What will probably happen next?", options: ["The woman will skip the seminar.", "The man will lend her his book.", "They will go to the library together.", "The woman will cancel the meeting."], correct: 1 },
+      { q: "What is the woman's problem?", options: ["She lost her notes.", "She could not find a reference book.", "She missed the seminar.", "She forgot the seminar time."], correct: 1 }
+    ]
+  },
+  structure: {
+    title: "Structure & written expression",
+    timeLimit: 600,
+    questions: [
+      { q: "The committee ___ its decision by Friday afternoon.", options: ["will announce", "announcing", "announce", "to announce"], correct: 0 },
+      { q: "___ the weather improves, the trip will be postponed.", options: ["Despite", "Unless", "Because of", "Although"], correct: 1 },
+      { q: "Find the error: The number of student have increased significantly this year.", options: ["The number of", "student", "have increased", "this year"], correct: 2 },
+      { q: "Find the error: She is one of the student who was awarded a scholarship.", options: ["one of the", "student", "who was awarded", "a scholarship"], correct: 1 },
+      { q: "Not only ___ the exam, but she also scored the highest in her class.", options: ["she passed", "did she pass", "she did pass", "passing she"], correct: 1 },
+      { q: "Find the error: Each of the applicants are required to submit two references.", options: ["Each of", "the applicants", "are required", "two references"], correct: 2 }
+    ]
+  },
+  reading: {
+    title: "Reading comprehension",
+    timeLimit: 480,
+    passage: {
+      heading: "Bacaan (contoh placeholder)",
+      text: "Coral reefs, often called the rainforests of the sea, support roughly a quarter of all marine species despite covering less than one percent of the ocean floor. Rising sea temperatures have triggered widespread coral bleaching, a process in which corals expel the algae living in their tissues, causing them to turn white and become more vulnerable to disease. Researchers are now testing selective breeding programs that aim to produce coral strains more resistant to heat stress, though scientists caution that such programs cannot fully offset the pace of ocean warming."
+    },
+    questions: [
+      { q: "What is the main topic of the passage?", options: ["The diversity of ocean species", "The threat of coral bleaching and possible responses", "The history of marine research", "Methods of ocean temperature measurement"], correct: 1 },
+      { q: "According to the passage, what happens during coral bleaching?", options: ["Corals grow new algae.", "Corals expel algae and turn white.", "Corals sink to the ocean floor.", "Corals reproduce more quickly."], correct: 1 },
+      { q: "What can be inferred about selective breeding programs?", options: ["They have already solved coral bleaching.", "They are considered a complete solution.", "They may help but have limits.", "They are no longer being tested."], correct: 2 },
+      { q: "The word 'vulnerable' in the passage is closest in meaning to:", options: ["resistant", "susceptible", "invisible", "abundant"], correct: 1 }
+    ]
+  }
+};
+
+let currentSection = null;
+let currentAnswers = {};
+let timerInterval = null;
+let timeLeft = 0;
+let quizSubmitted = false;
+
+function loadHistory(){
+  try{
+    return JSON.parse(localStorage.getItem('toefl_history') || '[]');
+  }catch(e){ return []; }
+}
+function saveHistoryEntry(entry){
+  const h = loadHistory();
+  h.unshift(entry);
+  localStorage.setItem('toefl_history', JSON.stringify(h.slice(0,20)));
+  renderHistory();
+}
+function renderHistory(){
+  const h = loadHistory();
+  const body = document.getElementById('historyBody');
+  if(h.length === 0){
+    body.innerHTML = '<tr><td colspan="4" class="empty">Belum ada riwayat. Kerjakan satu bagian untuk mulai mencatat progres.</td></tr>';
+    return;
+  }
+  body.innerHTML = h.map(e => `<tr><td>${e.date}</td><td>${e.section}</td><td>${e.score}</td><td>${e.duration}</td></tr>`).join('');
+}
+
+function formatTime(s){
+  const m = Math.floor(s/60).toString().padStart(2,'0');
+  const sec = (s%60).toString().padStart(2,'0');
+  return m + ':' + sec;
+}
+
+function selectSection(key){
+  currentSection = key;
+  currentAnswers = {};
+  quizSubmitted = false;
+  clearInterval(timerInterval);
+
+  document.querySelectorAll('.picker button').forEach(b => b.classList.toggle('active', b.dataset.sec === key));
+
+  const data = questionBank[key];
+  document.getElementById('quizLabel').textContent = data.title;
+  document.getElementById('quizFrame').classList.add('active');
+  document.getElementById('resultBox').classList.remove('active');
+
+  const passageBox = document.getElementById('passageBox');
+  if(data.passage){
+    passageBox.style.display = 'block';
+    passageBox.innerHTML = `<h5>${data.passage.heading}</h5><p style="margin:0;">${data.passage.text}</p>`;
+  } else {
+    passageBox.style.display = 'none';
+  }
+
+  const list = document.getElementById('questionList');
+  list.innerHTML = data.questions.map((item, qi) => `
+    <div class="question">
+      <div class="qtext"><span class="qn">${(qi+1).toString().padStart(2,'0')}</span><span>${item.q}</span></div>
+      <div class="options">
+        ${item.options.map((opt, oi) => `
+          <div class="option" data-q="${qi}" data-o="${oi}" onclick="selectOption(${qi},${oi})">
+            <span class="ov">${String.fromCharCode(65+oi)}</span><span>${opt}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  updateProgress();
+  timeLeft = data.timeLimit;
+  document.getElementById('timer').classList.remove('low');
+  updateTimerDisplay();
+  timerInterval = setInterval(tick, 1000);
+
+  document.getElementById('quizFrame').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function tick(){
+  timeLeft--;
+  if(timeLeft <= 30) document.getElementById('timer').classList.add('low');
+  if(timeLeft <= 0){
+    clearInterval(timerInterval);
+    timeLeft = 0;
+    if(!quizSubmitted) submitQuiz();
+  }
+  updateTimerDisplay();
+}
+function updateTimerDisplay(){
+  document.getElementById('timer').textContent = formatTime(Math.max(timeLeft,0));
+}
+
+function selectOption(qi, oi){
+  if(quizSubmitted) return;
+  currentAnswers[qi] = oi;
+  document.querySelectorAll(`.option[data-q="${qi}"]`).forEach(el => {
+    el.classList.toggle('selected', parseInt(el.dataset.o) === oi);
+  });
+  updateProgress();
+}
+
+function updateProgress(){
+  const total = questionBank[currentSection].questions.length;
+  const answered = Object.keys(currentAnswers).length;
+  document.getElementById('progressText').textContent = `${answered} / ${total} dijawab`;
+}
+
+function submitQuiz(){
+  if(quizSubmitted) return;
+  quizSubmitted = true;
+  clearInterval(timerInterval);
+
+  const data = questionBank[currentSection];
+  let correctCount = 0;
+  data.questions.forEach((item, qi) => {
+    if(currentAnswers[qi] === item.correct) correctCount++;
+  });
+
+  const elapsed = data.timeLimit - timeLeft;
+  document.getElementById('scoreText').textContent = `${correctCount}/${data.questions.length}`;
+  document.getElementById('resultDetail').textContent = `Diselesaikan dalam ${formatTime(elapsed)}. Klik "Lihat pembahasan" untuk cek jawaban yang benar dan salah.`;
+  document.getElementById('resultBox').classList.add('active');
+
+  saveHistoryEntry({
+    date: new Date().toLocaleDateString('id-ID', {day:'2-digit', month:'short', year:'numeric'}),
+    section: data.title,
+    score: `${correctCount}/${data.questions.length}`,
+    duration: formatTime(elapsed)
+  });
+
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function reviewAnswers(){
+  const data = questionBank[currentSection];
+  data.questions.forEach((item, qi) => {
+    document.querySelectorAll(`.option[data-q="${qi}"]`).forEach(el => {
+      const oi = parseInt(el.dataset.o);
+      el.classList.remove('selected');
+      if(oi === item.correct) el.classList.add('correct');
+      else if(currentAnswers[qi] === oi) el.classList.add('incorrect');
+    });
+  });
+  document.getElementById('questionList').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function restartCurrent(){
+  selectSection(currentSection);
+}
+
+renderHistory();
+</script>
+
+</body>
+</html>
