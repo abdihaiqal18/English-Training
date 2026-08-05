@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lembar Latihan — TOEFL ITP Pribadi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEAE0;
+    --paper-2:#E6E0D2;
+    --ink:#20242B;
+    --ink-soft:#4B5160;
+    --rule:#C9C2AE;
+    --accent:#3B6E5E;
+    --accent-dark:#23453A;
+    --accent-tint:#DCE7E1;
+    --wrong:#A6432E;
+    --wrong-tint:#F3E1DC;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Source Sans 3', sans-serif;font-size:16px;line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Zilla Slab', serif;font-weight:600;margin:0;color:var(--ink);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--accent-dark);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  header{border-bottom:2px solid var(--ink);padding:18px 0;background:var(--paper);position:sticky;top:0;z-index:50;}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{display:flex;align-items:baseline;gap:10px;}
+  .brand .stamp{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;border:1px solid var(--ink);border-radius:100px;padding:2px 9px;color:var(--ink-soft);}
+  .brand h1{font-size:20px;}
+  nav{display:flex;gap:22px;font-size:14px;}
+  nav a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;}
+  nav a:hover{color:var(--ink);border-bottom-color:var(--ink);}
+
+  .hero{padding:64px 0 48px;border-bottom:1px solid var(--rule);}
+  .hero .eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:14px;display:block;}
+  .hero h2{font-size:38px;line-height:1.15;max-width:620px;}
+  .hero p.lead{font-size:17px;color:var(--ink-soft);max-width:560px;margin:18px 0 28px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{font-family:'Source Sans 3';font-size:15px;font-weight:600;padding:12px 22px;border-radius:var(--radius);border:1.5px solid var(--ink);cursor:pointer;text-decoration:none;display:inline-block;}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{background:var(--paper-2);}
+  .btn-sm{font-size:13px;padding:7px 14px;}
+
+  .sheet{margin-top:40px;border:1.5px solid var(--ink);background:#fff;padding:20px 24px;max-width:420px;box-shadow:6px 6px 0 var(--ink);}
+  .sheet .sheet-head{display:flex;justify-content:space-between;font-family:'IBM Plex Mono';font-size:11px;color:var(--ink-soft);border-bottom:1px dashed var(--rule);padding-bottom:10px;margin-bottom:12px;}
+  .bubble-row{display:flex;align-items:center;gap:14px;padding:6px 0;font-family:'IBM Plex Mono';font-size:13px;}
+  .bubble-row .qn{width:18px;color:var(--ink-soft);}
+  .bubble{width:16px;height:16px;border-radius:50%;border:1.3px solid var(--ink);display:inline-block;}
+  .bubble.filled{background:var(--ink);}
+
+  .section-overview{padding:56px 0;border-bottom:1px solid var(--rule);}
+  .kicker{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;}
+  .section-overview h3{font-size:24px;margin-top:8px;margin-bottom:28px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{border:1px solid var(--ink);background:#fff;padding:18px;position:relative;}
+  .card .num{font-family:'IBM Plex Mono';font-size:12px;color:var(--accent-dark);border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:10px;display:block;}
+  .card h4{font-family:'Zilla Slab';font-size:17px;font-weight:600;margin:0 0 6px;}
+  .card p{font-size:13.5px;color:var(--ink-soft);margin:0 0 6px;}
+  .card .meta{font-family:'IBM Plex Mono';font-size:12px;color:var(--accent-dark);margin-bottom:14px;display:block;}
+  .card button{width:100%;}
+
+  .materi{padding:56px 0;border-bottom:1px solid var(--rule);}
+  .materi h3{font-size:24px;margin-top:8px;margin-bottom:8px;}
+  .materi .sub{color:var(--ink-soft);font-size:14.5px;margin-bottom:24px;max-width:560px;}
+  .tabbar{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .tabbar button{font-family:'IBM Plex Mono';font-size:13px;padding:9px 16px;border:1px solid var(--ink);background:#fff;cursor:pointer;border-radius:100px;}
+  .tabbar button.active{background:var(--ink);color:var(--paper);}
+  .tabpanel{display:none;}
+  .tabpanel.active{display:block;}
+  .materi-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .materi-col h5{font-family:'Zilla Slab';font-size:16px;margin:0 0 4px;color:var(--accent-dark);}
+  .materi-col .col-sub{font-size:12.5px;color:var(--ink-soft);margin:0 0 14px;}
+  .materi-list{list-style:none;margin:0;padding:0;}
+  .materi-list li{border-bottom:1px solid var(--rule);padding:12px 0;font-size:14px;}
+  .materi-list li:first-child{padding-top:0;}
+  .materi-list li:last-child{border-bottom:none;}
+  .materi-list li b{display:block;font-family:'Zilla Slab';font-weight:600;font-size:14.5px;margin-bottom:3px;}
+  .materi-list.tips li b{color:var(--accent-dark);}
+  @media (max-width:720px){.materi-grid{grid-template-columns:1fr;}}
+
+  .practice{padding:56px 0 80px;}
+  .practice h3{font-size:24px;margin:8px 0 28px;}
+  .picker{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+  .picker button{font-family:'IBM Plex Mono';font-size:13px;padding:9px 16px;border:1px solid var(--ink);background:#fff;cursor:pointer;border-radius:100px;}
+  .picker button.active{background:var(--ink);color:var(--paper);}
+
+  .quiz-frame{border:1px solid var(--ink);background:#fff;padding:28px;display:none;}
+  .quiz-frame.active{display:block;}
+  .quiz-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed var(--rule);padding-bottom:14px;margin-bottom:20px;position:sticky;top:70px;background:#fff;z-index:10;}
+  .quiz-top .label{font-family:'Zilla Slab';font-size:18px;font-weight:600;}
+  .timer{font-family:'IBM Plex Mono';font-size:18px;padding:4px 12px;border:1px solid var(--ink);border-radius:100px;}
+  .timer.low{color:var(--wrong);border-color:var(--wrong);}
+
+  .part-label{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-tint);padding:8px 12px;margin:26px 0 14px;}
+  .group-heading{font-family:'Zilla Slab';font-size:14px;margin:0 0 8px;color:var(--accent-dark);}
+  .passage{background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;margin-bottom:16px;font-size:14.5px;max-height:220px;overflow-y:auto;white-space:pre-wrap;}
+
+  .question{border-bottom:1px solid var(--rule);padding:18px 0;}
+  .question:first-of-type{padding-top:0;}
+  .qtext{display:flex;gap:10px;font-size:15px;margin-bottom:12px;align-items:flex-start;}
+  .qtext .qn{font-family:'IBM Plex Mono';color:var(--accent-dark);min-width:28px;}
+  .cat-tag{display:none;font-family:'IBM Plex Mono';font-size:10.5px;color:var(--accent-dark);background:var(--accent-tint);padding:2px 8px;border-radius:100px;margin-left:auto;white-space:nowrap;height:fit-content;}
+  .cat-tag.show{display:inline-block;}
+  .options{display:grid;gap:8px;padding-left:32px;}
+  .option{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14.5px;padding:6px 8px;border-radius:var(--radius);}
+  .option:hover{background:var(--paper-2);}
+  .option .ov{width:20px;height:20px;border-radius:50%;border:1.3px solid var(--ink);flex:none;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono';font-size:11px;}
+  .option.selected .ov{background:var(--ink);color:var(--paper);}
+  .option.correct .ov{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .option.incorrect .ov{background:var(--wrong);border-color:var(--wrong);color:#fff;}
+  .explain{display:none;margin:12px 0 0 32px;padding:10px 14px;background:var(--accent-tint);border-left:3px solid var(--accent);font-size:13px;color:var(--accent-dark);}
+  .explain.show{display:block;}
+
+  .quiz-actions{display:flex;justify-content:space-between;align-items:center;margin-top:24px;position:sticky;bottom:0;background:#fff;padding-top:14px;border-top:1px solid var(--rule);}
+  .progress-text{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--ink-soft);}
+
+  .result{display:none;padding:28px 0;border-bottom:2px solid var(--ink);margin-bottom:28px;}
+  .result.active{display:block;}
+  .result-top{text-align:center;margin-bottom:28px;}
+  .result .score{font-family:'IBM Plex Mono';font-size:56px;color:var(--accent-dark);margin:8px 0;}
+  .result p{color:var(--ink-soft);}
+  .result-top .btn{margin:4px 6px;}
+
+  .weakness{background:#fff;border:1px solid var(--ink);padding:20px;margin-bottom:0;}
+  .weakness h5{font-family:'Zilla Slab';font-size:16px;margin:0 0 4px;}
+  .weakness .col-sub{font-size:12.5px;color:var(--ink-soft);margin:0 0 14px;}
+  .weak-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:13.5px;}
+  .weak-row:last-child{border-bottom:none;}
+  .weak-row .wname{flex:1;}
+  .weak-row .wscore{font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-soft);width:52px;text-align:right;}
+  .weak-bar{flex:2;height:8px;background:var(--paper-2);border-radius:100px;overflow:hidden;}
+  .weak-bar-fill{height:100%;background:var(--accent);}
+  .weak-bar-fill.low{background:var(--wrong);}
+
+  .history{margin-top:36px;}
+  .history h4{font-family:'Zilla Slab';font-size:16px;margin:0 0 10px;}
+  .history table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .history th,.history td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--rule);}
+  .history th{font-family:'IBM Plex Mono';font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+  .history .empty{color:var(--ink-soft);font-style:italic;padding:10px 0;}
+
+  footer{border-top:2px solid var(--ink);padding:26px 0;font-size:13px;color:var(--ink-soft);}
+  footer .wrap{display:flex;justify-content:space-between;}
+
+  .note{background:var(--accent-tint);border-left:3px solid var(--accent);padding:12px 16px;font-size:13.5px;color:var(--accent-dark);margin-bottom:24px;}
+
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(32,36,43,0.55);align-items:center;justify-content:center;z-index:100;padding:20px;}
+  .modal-overlay.active{display:flex;}
+  .modal-box{background:#fff;border:1.5px solid var(--ink);max-width:420px;width:100%;padding:26px;box-shadow:6px 6px 0 var(--ink);}
+  .modal-box .eyebrow{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);display:block;margin-bottom:8px;}
+  .modal-box h4{font-family:'Zilla Slab';font-size:19px;margin:0 0 10px;}
+  .modal-box p{font-size:14px;color:var(--ink-soft);margin:0 0 8px;}
+  .modal-stats{display:flex;gap:18px;margin:16px 0 22px;}
+  .modal-stats div{font-family:'IBM Plex Mono';font-size:13px;}
+  .modal-stats span{display:block;font-size:20px;color:var(--ink);}
+  .modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+
+  @media (max-width:720px){
+    .cards{grid-template-columns:1fr;}
+    .hero h2{font-size:29px;}
+    header .wrap{flex-direction:column;gap:10px;align-items:flex-start;}
+    nav{flex-wrap:wrap;gap:14px;}
+    .quiz-top{position:static;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <h1>Lembar Latihan</h1>
+      <span class="stamp">TOEFL ITP · pribadi</span>
+    </div>
+    <nav>
+      <a href="#tentang">Tentang</a>
+      <a href="#bagian">Bagian tes</a>
+      <a href="#materi">Materi</a>
+      <a href="#latihan">Latihan</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="tentang">
+  <div class="wrap">
+    <span class="eyebrow">Ruang belajar mandiri</span>
+    <h2>Latihan TOEFL ITP, di jadwalmu sendiri.</h2>
+    <p class="lead">Pelajari dulu konsep dasar dan tips tiap bagian, lalu kerjakan soal dengan jumlah dan durasi timer mengikuti format resmi TOEFL ITP. Setelah selesai, kelemahanmu per kategori soal dan pembahasan lengkapnya langsung tampil.</p>
+    <div class="hero-actions">
+      <a href="#materi" class="btn btn-primary">Pelajari materi dulu</a>
+      <a href="#latihan" class="btn btn-ghost">Langsung latihan soal</a>
+    </div>
+
+    <div class="sheet" aria-hidden="true">
+      <div class="sheet-head"><span>LEMBAR JAWABAN</span><span>SECTION 2</span></div>
+      <div class="bubble-row"><span class="qn">01</span><span class="bubble"></span><span class="bubble filled"></span><span class="bubble"></span><span class="bubble"></span></div>
+      <div class="bubble-row"><span class="qn">02</span><span class="bubble filled"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></div>
+      <div class="bubble-row"><span class="qn">03</span><span class="bubble"></span><span class="bubble"></span><span class="bubble filled"></span><span class="bubble"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-overview" id="bagian">
+  <div class="wrap">
+    <span class="kicker">Struktur tes</span>
+    <h3>Tiga bagian, urut seperti TOEFL ITP asli</h3>
+    <div class="cards">
+      <div class="card">
+        <span class="num">Section 1</span>
+        <h4>Listening comprehension</h4>
+        <p>Part A (dialog pendek), Part B (dialog panjang), Part C (ceramah singkat).</p>
+        <span class="meta">50 soal · 35 menit</span>
+        <button class="btn btn-ghost" onclick="requestStart('listening')">Buka bagian ini</button>
+      </div>
+      <div class="card">
+        <span class="num">Section 2</span>
+        <h4>Structure &amp; written expression</h4>
+        <p>Melengkapi kalimat, lalu menemukan kesalahan tata bahasa dalam kalimat yang sudah jadi.</p>
+        <span class="meta">40 soal · 25 menit</span>
+        <button class="btn btn-ghost" onclick="requestStart('structure')">Buka bagian ini</button>
+      </div>
+      <div class="card">
+        <span class="num">Section 3</span>
+        <h4>Reading comprehension</h4>
+        <p>Lima bacaan pendek, masing-masing diikuti sepuluh pertanyaan pemahaman.</p>
+        <span class="meta">50 soal · 55 menit</span>
+        <button class="btn btn-ghost" onclick="requestStart('reading')">Buka bagian ini</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="materi" id="materi">
+  <div class="wrap">
+    <span class="kicker">Sebelum mengerjakan soal</span>
+    <h3>Materi dasar, tips &amp; trik per bagian</h3>
+    <p class="sub">Pahami dulu apa yang diuji dan pola jebakan yang sering muncul di tiap bagian. Ini mempercepat cara berpikirmu saat benar-benar mengerjakan soal dengan timer berjalan.</p>
+
+    <div class="tabbar">
+      <button data-tab="listening" onclick="showMateri('listening')">Listening</button>
+      <button data-tab="structure" onclick="showMateri('structure')">Structure &amp; written expression</button>
+      <button data-tab="reading" onclick="showMateri('reading')">Reading</button>
+    </div>
+
+    <div class="tabpanel" data-panel="listening">
+      <div class="materi-grid">
+        <div class="materi-col">
+          <h5>Yang perlu dipahami</h5>
+          <p class="col-sub">Konsep dasar Listening Comprehension</p>
+          <ul class="materi-list">
+            <li><b>Tiga bagian dengan gaya berbeda.</b> Part A menguji percakapan pendek dua orang, Part B percakapan lebih panjang, Part C ceramah/monolog akademik.</li>
+            <li><b>Kamu hanya dengar audio sekali.</b> Tidak ada pengulangan, jadi fokus penuh sejak detik pertama sangat menentukan.</li>
+            <li><b>Jawaban jarang berupa kata yang sama persis.</b> Pilihan benar biasanya parafrase dari apa yang diucapkan, bukan pengulangan kata demi kata.</li>
+            <li><b>Pertanyaan sering menguji makna tersirat.</b> Bukan hanya "apa yang dikatakan", tapi "apa maksud sebenarnya".</li>
+          </ul>
+        </div>
+        <div class="materi-col">
+          <h5>Tips &amp; trik</h5>
+          <p class="col-sub">Supaya lebih mudah saat mengerjakan</p>
+          <ul class="materi-list tips">
+            <li><b>Baca pilihan jawaban secepat mungkin.</b> Kalau formatmu memungkinkan preview soal, manfaatkan jeda itu untuk menebak topik yang akan dibahas.</li>
+            <li><b>Waspadai kata negasi dan idiom.</b> Frasa seperti "not really" atau "I'd rather not" sering membalik makna kalimat sebelumnya.</li>
+            <li><b>Jangan langsung pilih opsi yang menyebut kata yang sama persis dengan audio</b> — itu sering jadi jebakan (opsi yang "terdengar mirip" tapi salah).</li>
+            <li><b>Eliminasi dulu, baru putuskan.</b> Coret opsi yang jelas salah agar peluang menjawab benar dari sisa opsi lebih besar.</li>
+            <li><b>Di Part B/C, catat ide utama tiap paragraf/segmen</b> secara singkat di kepala — biasanya ada satu soal yang menanyakan gambaran besarnya.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabpanel" data-panel="structure">
+      <div class="materi-grid">
+        <div class="materi-col">
+          <h5>Yang perlu dipahami</h5>
+          <p class="col-sub">Konsep dasar Structure &amp; Written Expression</p>
+          <ul class="materi-list">
+            <li><b>Dua jenis soal berbeda dalam satu section.</b> Structure meminta melengkapi kalimat rumpang, Written Expression meminta menemukan bagian yang salah dari kalimat yang sudah lengkap.</li>
+            <li><b>Setiap kalimat butuh subjek dan kata kerja yang jelas.</b> Banyak jebakan berupa kalimat yang "terdengar lengkap" tapi sebenarnya tidak punya kata kerja utama.</li>
+            <li><b>Kesesuaian subjek-kata kerja (agreement)</b> adalah salah satu pola kesalahan paling sering diuji.</li>
+            <li><b>Struktur paralel</b> — elemen yang disejajarkan (misal setelah "both...and" atau dalam sebuah daftar) harus punya bentuk gramatikal yang sama.</li>
+          </ul>
+        </div>
+        <div class="materi-col">
+          <h5>Tips &amp; trik</h5>
+          <p class="col-sub">Supaya lebih mudah saat mengerjakan</p>
+          <ul class="materi-list tips">
+            <li><b>Baca seluruh kalimat dulu</b> sebelum memutuskan jawaban — jangan hanya fokus di sekitar bagian yang rumpang atau digarisbawahi.</li>
+            <li><b>Cari dulu subjek dan kata kerja utamanya.</b> Ini langkah tercepat untuk mendeteksi masalah agreement atau kalimat yang tidak lengkap.</li>
+            <li><b>Untuk Written Expression, uji tiap opsi yang digarisbawahi satu per satu</b> dengan bertanya "apakah bentuk kata ini sudah tepat di posisi ini?"</li>
+            <li><b>Hafalkan pola kata sambung berpasangan</b> seperti "not only...but also", "either...or", "both...and" — ini sumber soal struktur paralel yang sangat umum.</li>
+            <li><b>Waspadai kata kerja bentuk -ing vs infinitive vs kata benda</b> pada posisi yang sama, sering jadi celah kesalahan bentuk kata.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabpanel" data-panel="reading">
+      <div class="materi-grid">
+        <div class="materi-col">
+          <h5>Yang perlu dipahami</h5>
+          <p class="col-sub">Konsep dasar Reading Comprehension</p>
+          <ul class="materi-list">
+            <li><b>Setiap bacaan biasanya diikuti kombinasi tipe soal yang sama:</b> ide utama, detail, inferensi, kosakata dalam konteks, dan rujukan kata ganti.</li>
+            <li><b>Soal ide utama menanyakan gambaran keseluruhan</b> bacaan, bukan satu detail spesifik di dalamnya.</li>
+            <li><b>Soal inferensi meminta kesimpulan logis</b> dari informasi yang ada, meski jawabannya tidak tertulis secara harfiah.</li>
+            <li><b>Soal kosakata menguji makna kata sesuai konteks kalimat</b>, bukan makna kata itu di kamus secara umum.</li>
+          </ul>
+        </div>
+        <div class="materi-col">
+          <h5>Tips &amp; trik</h5>
+          <p class="col-sub">Supaya lebih mudah saat mengerjakan</p>
+          <ul class="materi-list tips">
+            <li><b>Baca cepat (skim) dulu untuk menangkap ide besar</b> sebelum masuk ke pertanyaan detail — kamu tidak perlu memahami tiap kata di awal.</li>
+            <li><b>Untuk soal detail, kembali ke bacaan dan cari kalimat spesifiknya</b> — jangan mengandalkan ingatan saja.</li>
+            <li><b>Hindari opsi yang terdengar ekstrem</b> (selalu, tidak pernah, satu-satunya) — jawaban yang benar biasanya lebih berimbang dan sesuai isi bacaan.</li>
+            <li><b>Untuk soal kosakata, coba ganti kata tersebut dengan tiap opsi</b> dan lihat mana yang paling masuk akal dalam kalimat itu.</li>
+            <li><b>Atur waktu per bacaan.</b> Dengan lima bacaan dalam 55 menit, usahakan tidak menghabiskan lebih dari sekitar sepuluh menit per bacaan.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="practice" id="latihan">
+  <div class="wrap">
+    <span class="kicker">Kerjakan sekarang</span>
+    <h3>Pilih bagian, lalu jawab seperti ujian sungguhan</h3>
+
+    <div class="note">Soal di bawah ini contoh placeholder yang jumlah dan durasinya sudah mengikuti format resmi TOEFL ITP. Ganti isi soal, bacaan, kategori, dan pembahasan di dalam <span class="mono">questionBank</span> pada file ini dengan materi milikmu sendiri.</div>
+
+    <div class="picker">
+      <button data-sec="listening" onclick="requestStart('listening')">Listening (50)</button>
+      <button data-sec="structure" onclick="requestStart('structure')">Structure &amp; written expression (40)</button>
+      <button data-sec="reading" onclick="requestStart('reading')">Reading (50)</button>
+    </div>
+
+    <div class="result" id="resultBox">
+      <div class="result-top">
+        <span class="mono" style="font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;">Hasil</span>
+        <div class="score mono" id="scoreText">0/0</div>
+        <p id="resultDetail"></p>
+        <button class="btn btn-primary btn-sm" onclick="requestStart(currentSection)">Ulangi bagian ini</button>
+      </div>
+      <div class="weakness">
+        <h5>Kelemahan per kategori soal</h5>
+        <p class="col-sub">Kategori dengan akurasi paling rendah ditampilkan lebih dulu — fokuskan belajar ulang di situ.</p>
+        <div id="weaknessList"></div>
+      </div>
+    </div>
+
+    <div class="quiz-frame" id="quizFrame">
+      <div class="quiz-top">
+        <span class="label" id="quizLabel">—</span>
+        <span class="timer mono" id="timer">00:00</span>
+      </div>
+      <div id="questionList"></div>
+      <div class="quiz-actions">
+        <span class="progress-text" id="progressText">0 / 0 dijawab</span>
+        <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()">Kumpulkan jawaban</button>
+      </div>
+    </div>
+
+    <div class="history">
+      <h4>Riwayat latihan</h4>
+      <table id="historyTable">
+        <thead><tr><th>Tanggal</th><th>Bagian</th><th>Skor</th><th>Durasi</th></tr></thead>
+        <tbody id="historyBody"><tr><td colspan="4" class="empty">Belum ada riwayat. Kerjakan satu bagian untuk mulai mencatat progres.</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Lembar Latihan TOEFL ITP — dipakai untuk belajar pribadi.</span>
+    <span>Data tersimpan lokal di browser ini.</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="readyModal">
+  <div class="modal-box">
+    <span class="eyebrow">Sebelum mulai</span>
+    <h4 id="modalTitle">Siap mengerjakan bagian ini?</h4>
+    <p>Timer berjalan otomatis begitu kamu menekan "Ya, mulai" dan tidak bisa dijeda. Pastikan kamu tidak akan terganggu selama durasi berikut.</p>
+    <div class="modal-stats">
+      <div>Jumlah soal<span id="modalCount">0</span></div>
+      <div>Durasi<span id="modalDuration">00:00</span></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cancelStart()">Belum siap</button>
+      <button class="btn btn-primary" onclick="confirmStart()">Ya, mulai</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questionBank = {"listening": {"title": "Listening comprehension", "timeLimit": 2100, "groups": [{"heading": null, "passage": null, "questions": [{"passage": "Man: Have you finished the lab report yet?\nWoman: Not yet, I still need to run the last set of tests.", "q": "What does the woman mean?", "options": ["She has already submitted the report.", "She has not completed her testing.", "She does not want to do the lab report.", "She finished the report early."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"She has not completed her testing.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: Are you coming to the study group tonight?\nMan: I would, but I have a shift at the library until nine.", "q": "What does the man imply?", "options": ["He cannot attend because of work.", "He forgot about the study group.", "He does not like study groups.", "He will arrive early."], "correct": 0, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi A — \"He cannot attend because of work.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Do you know if the seminar was moved to Hall B?\nWoman: That's what I heard, but you should check the notice board.", "q": "What does the woman suggest the man do?", "options": ["Ask the professor directly.", "Confirm the location on the notice board.", "Skip the seminar.", "Go to Hall A instead."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Confirm the location on the notice board.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: I can't believe how long the printer line is.\nMan: Tell me about it, I have been waiting for twenty minutes.", "q": "What are the speakers mainly discussing?", "options": ["A broken printer.", "A long wait to use the printer.", "A new printing policy.", "Where to buy a printer."], "correct": 1, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi B — \"A long wait to use the printer.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Could you cover my shift on Saturday? I have a family event.\nWoman: I might be able to, let me check my schedule first.", "q": "What will the woman probably do next?", "options": ["Refuse the request immediately.", "Check her availability before answering.", "Cancel her own plans.", "Ask someone else to cover the shift."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"Check her availability before answering.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: Did you get a chance to review my draft?\nMan: I read through it, but I think the conclusion needs more support.", "q": "What does the man think about the draft?", "options": ["It is ready to submit.", "The conclusion should be strengthened.", "It is too short overall.", "It has no errors."], "correct": 1, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi B — \"The conclusion should be strengthened.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: The bus is running late again.\nWoman: Maybe we should just walk, it's only fifteen minutes from here.", "q": "What does the woman propose?", "options": ["Waiting longer for the bus.", "Taking a taxi instead.", "Walking to their destination.", "Calling the bus company."], "correct": 2, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi C — \"Walking to their destination.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: I heard the registrar's office is closed for renovation.\nMan: Really? I needed to submit my form today.", "q": "What is the man's problem?", "options": ["He lost his registration form.", "He needs to submit a form but the office is closed.", "He missed the registration deadline.", "He does not know where the office is."], "correct": 1, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi B — \"He needs to submit a form but the office is closed.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Are you taking the economics elective next term?\nWoman: I'm still deciding between that and the statistics course.", "q": "What does the woman mean?", "options": ["She has already chosen the economics elective.", "She is undecided about which course to take.", "She will not take either course.", "She dislikes both subjects."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"She is undecided about which course to take.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: This café gets so crowded around noon.\nMan: Yeah, we should come earlier next time.", "q": "What do the speakers agree on?", "options": ["Avoiding the café altogether.", "Arriving earlier to beat the crowd.", "Complaining to the manager.", "Ordering food in advance."], "correct": 1, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi B — \"Arriving earlier to beat the crowd.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Do you mind if I borrow your notes from Monday's lecture?\nWoman: Go ahead, just return them before the exam.", "q": "What does the woman ask the man to do?", "options": ["Keep the notes permanently.", "Return the notes before the exam.", "Copy the notes for her too.", "Attend Monday's lecture."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Return the notes before the exam.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: I thought the deadline was next week, not tomorrow.\nMan: It got moved up because of the holiday schedule.", "q": "Why was the deadline changed?", "options": ["The professor forgot the original date.", "It was moved because of the holiday schedule.", "Students asked for an extension.", "There was a printing error."], "correct": 1, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi B — \"It was moved because of the holiday schedule.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: The dorm elevator has been out of service all week.\nWoman: I know, I've been taking the stairs to the fifth floor.", "q": "What has the woman been doing?", "options": ["Waiting for the elevator to be fixed.", "Using the stairs instead of the elevator.", "Moving to a different dorm.", "Reporting the elevator to maintenance."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"Using the stairs instead of the elevator.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: Have you picked a topic for the history paper?\nMan: Not yet, everything the professor suggested sounds interesting.", "q": "What is the man's difficulty?", "options": ["He dislikes all the suggested topics.", "He finds it hard to choose among interesting topics.", "He has not started the paper.", "He wants a topic change from the professor."], "correct": 1, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi B — \"He finds it hard to choose among interesting topics.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: The gym is closing early today for maintenance.\nWoman: Good thing I already finished my workout.", "q": "What does the woman mean?", "options": ["She missed her workout because of the closure.", "She had already exercised before the closure.", "She plans to work out somewhere else.", "She did not know about the closure."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"She had already exercised before the closure.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: Could you email me the meeting minutes from yesterday?\nMan: Sure, I'll send them as soon as I get to my desk.", "q": "What will the man do?", "options": ["Print the meeting minutes.", "Send the minutes by email later.", "Rewrite the meeting minutes.", "Ask someone else to send them."], "correct": 1, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi B — \"Send the minutes by email later.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: I'm thinking of switching my major to biology.\nWoman: That's a big decision, have you talked to an advisor?", "q": "What does the woman recommend?", "options": ["Switching majors immediately.", "Speaking with an academic advisor first.", "Staying in the current major.", "Taking a semester off."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"Speaking with an academic advisor first.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: The article you recommended was really dense.\nMan: Yeah, it took me two readings to fully understand it.", "q": "What do both speakers agree about the article?", "options": ["It was easy to understand.", "It required careful, repeated reading.", "It was too short.", "It was irrelevant to the course."], "correct": 1, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi B — \"It required careful, repeated reading.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Is the campus shuttle still running this late?\nWoman: It stops at eleven, so we still have time.", "q": "What does the woman tell the man?", "options": ["The shuttle has already stopped running.", "There is still time to catch the shuttle.", "The shuttle schedule has changed permanently.", "They should walk instead."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"There is still time to catch the shuttle.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: I can't find my student ID anywhere.\nMan: Did you check the pocket of your backpack?", "q": "What does the man suggest?", "options": ["Reporting the ID as stolen.", "Checking a specific place for the ID.", "Applying for a new ID immediately.", "Asking a professor for help."], "correct": 1, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi B — \"Checking a specific place for the ID.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: The professor extended the essay deadline by two days.\nWoman: That's a relief, I really needed the extra time.", "q": "How does the woman feel about the news?", "options": ["Annoyed by the delay.", "Relieved to have more time.", "Indifferent to the change.", "Confused about the new date."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"Relieved to have more time.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: Do you know a good place to get coffee near campus?\nMan: There's a small shop behind the library that's pretty good.", "q": "What does the man recommend?", "options": ["A coffee shop behind the library.", "A shop inside the library.", "Making coffee at home.", "A chain café downtown."], "correct": 0, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi A — \"A coffee shop behind the library.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: I heard the internship applications open next Monday.\nWoman: I should update my resume before then.", "q": "What does the woman plan to do?", "options": ["Apply for the internship immediately.", "Update her resume before applying.", "Wait until the deadline to apply.", "Ask for a recommendation letter."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Update her resume before applying.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: Why is the lecture hall so empty today?\nMan: A lot of students are at the career fair.", "q": "Why is attendance low today?", "options": ["Many students are attending the career fair.", "The lecture was cancelled.", "It is a school holiday.", "The room was changed."], "correct": 0, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi A — \"Many students are attending the career fair.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Can we reschedule our meeting to Thursday?\nWoman: Thursday works better for me anyway.", "q": "How does the woman respond to the request?", "options": ["She refuses the new schedule.", "She agrees, since it suits her too.", "She suggests a different day.", "She cancels the meeting entirely."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"She agrees, since it suits her too.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: The new library hours start next week, right?\nMan: Actually, they already changed last Monday.", "q": "What does the man point out?", "options": ["The new hours have not started yet.", "The new hours already took effect.", "The library hours will not change.", "He is unsure about the new hours."], "correct": 1, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi B — \"The new hours already took effect.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: Did the workshop cover citation formats?\nWoman: Only briefly, we mostly focused on research methods.", "q": "What was the main focus of the workshop?", "options": ["Citation formats.", "Research methods.", "Library resources.", "Grammar rules."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Research methods.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: I'm worried I won't finish the project on time.\nMan: Why don't we split the remaining tasks between us?", "q": "What does the man propose?", "options": ["Asking for a deadline extension.", "Dividing the remaining work between them.", "Finishing the project alone.", "Abandoning part of the project."], "correct": 1, "category": "Sikap/perasaan pembicara", "explanation": "Jawaban benar: opsi B — \"Dividing the remaining work between them.\". Perhatikan nada dan pilihan kata pembicara untuk menangkap sikap atau perasaan yang tersirat."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Man: The vending machine on this floor is broken again.\nWoman: There's another one near the stairwell that works fine.", "q": "What does the woman suggest?", "options": ["Reporting the broken machine.", "Using a different working machine.", "Waiting for a repair.", "Bringing snacks from home instead."], "correct": 1, "category": "Makna tersirat", "explanation": "Jawaban benar: opsi B — \"Using a different working machine.\". Ini merupakan parafrase dari maksud tersirat ucapan terakhir, bukan pengulangan kata secara harfiah."}]}, {"heading": null, "passage": null, "questions": [{"passage": "Woman: I thought today's guest lecture was optional.\nMan: It's optional, but it counts as extra credit.", "q": "What does the man clarify?", "options": ["The lecture is mandatory for all students.", "Attending gives extra credit even though it's optional.", "The lecture was cancelled.", "Extra credit is no longer offered."], "correct": 1, "category": "Menyimpulkan tindakan", "explanation": "Jawaban benar: opsi B — \"Attending gives extra credit even though it's optional.\". Jawaban ini adalah langkah logis berikutnya berdasarkan apa yang baru saja dikatakan pembicara."}]}, {"heading": "Percakapan panjang 1 (contoh placeholder)", "passage": "Student: I wanted to ask about switching my thesis advisor. Advisor: I see, can you tell me why? Student: My current advisor's research focus has shifted, and it doesn't align with my topic anymore. Advisor: That's a valid reason. You'll need to submit a request form to the department office, and I'd recommend talking to your current advisor first as a courtesy. Student: I was planning to do that this week. Advisor: Good, and once you find a new advisor willing to take you on, the switch usually takes about two weeks to process.", "questions": [{"q": "Why does the student want to change advisors?", "options": ["The advisor is retiring.", "The advisor's research focus no longer matches the student's topic.", "The student is transferring schools.", "The advisor gave a poor evaluation."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"The advisor's research focus no longer matches the student's topic.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What does the advisor recommend the student do first?", "options": ["Submit the request form immediately.", "Talk to the current advisor as a courtesy.", "Choose a new topic.", "Wait until next semester."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Talk to the current advisor as a courtesy.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "How long does the switching process usually take?", "options": ["One week.", "Two weeks.", "One month.", "A full semester."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"Two weeks.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "What is the student's plan for this week?", "options": ["Submit the department form.", "Speak with the current advisor.", "Meet a new advisor.", "Withdraw from the thesis."], "correct": 1, "category": "Tujuan/fungsi pembicara", "explanation": "Jawaban benar: opsi B — \"Speak with the current advisor.\". Fokus pada alasan pembicara mengatakan sesuatu, bukan hanya isi literalnya."}]}, {"heading": "Percakapan panjang 2 (contoh placeholder)", "passage": "Employee: I noticed the quarterly numbers came in lower than projected. Manager: Yes, mainly due to the delayed product launch. Employee: Should we revise the targets for next quarter? Manager: Not yet — let's see how the launch performs over the first month before making changes. Employee: That makes sense. Should I prepare a report comparing this quarter to last year instead? Manager: That would be helpful, especially if you can highlight which regions underperformed.", "questions": [{"q": "Why were the quarterly numbers lower than expected?", "options": ["A pricing error.", "A delayed product launch.", "Increased competition.", "A staffing shortage."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"A delayed product launch.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What does the manager decide about next quarter's targets?", "options": ["Raise them immediately.", "Lower them immediately.", "Wait before making changes.", "Cancel the targets."], "correct": 2, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi C — \"Wait before making changes.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What does the employee offer to prepare?", "options": ["A marketing plan.", "A year-over-year comparison report.", "A new product proposal.", "A staffing review."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"A year-over-year comparison report.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "What does the manager want highlighted in the report?", "options": ["Overall company growth.", "Which regions underperformed.", "Customer satisfaction scores.", "Employee productivity."], "correct": 1, "category": "Tujuan/fungsi pembicara", "explanation": "Jawaban benar: opsi B — \"Which regions underperformed.\". Fokus pada alasan pembicara mengatakan sesuatu, bukan hanya isi literalnya."}]}, {"heading": "Ceramah 1 (contoh placeholder)", "passage": "Today we'll look at how cities design public transit routes. Planners typically start by mapping population density, then overlay existing traffic patterns to identify congestion points. Interestingly, the most efficient routes are rarely straight lines; they curve to serve the highest number of residents per stop. Once a draft route is created, planners run simulations to estimate ridership before any construction begins, since building a line that goes unused is enormously costly.", "questions": [{"q": "What is the talk mainly about?", "options": ["The history of public transit.", "How cities plan transit routes.", "The cost of building roads.", "Population growth in cities."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"How cities plan transit routes.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What do planners map first?", "options": ["Traffic accidents.", "Population density.", "Construction costs.", "Weather patterns."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Population density.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Why are efficient routes rarely straight?", "options": ["Straight routes are more expensive.", "They curve to serve more residents.", "Curved routes are safer.", "City regulations require curves."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"They curve to serve more residents.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "Why do planners run ridership simulations first?", "options": ["To satisfy legal requirements.", "To avoid building an unused, costly line.", "To choose bus colors.", "To hire construction workers."], "correct": 1, "category": "Tujuan/fungsi pembicara", "explanation": "Jawaban benar: opsi B — \"To avoid building an unused, costly line.\". Fokus pada alasan pembicara mengatakan sesuatu, bukan hanya isi literalnya."}]}, {"heading": "Ceramah 2 (contoh placeholder)", "passage": "Sleep researchers have long been interested in why humans dream. One prominent theory suggests dreaming helps consolidate memories, essentially sorting the day's experiences into long-term storage. Another theory proposes that dreams simulate threatening scenarios, allowing the brain to rehearse responses in a low-risk environment. Neither theory fully explains dreaming on its own, which is why many researchers now believe dreams likely serve multiple overlapping functions.", "questions": [{"q": "What is the main subject of the talk?", "options": ["Sleep disorders.", "Theories about why we dream.", "How to remember dreams.", "The stages of sleep."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Theories about why we dream.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "According to the memory consolidation theory, what do dreams do?", "options": ["Erase unnecessary memories.", "Sort experiences into long-term storage.", "Prevent memory formation.", "Create false memories."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Sort experiences into long-term storage.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What does the threat simulation theory propose?", "options": ["Dreams are random and meaningless.", "Dreams let the brain rehearse responses to danger.", "Dreams only occur during stress.", "Dreams block emotional processing."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"Dreams let the brain rehearse responses to danger.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "What do many researchers now believe?", "options": ["Only one theory is correct.", "Dreaming serves multiple functions.", "Dreaming has no clear purpose.", "Dreams cannot be studied scientifically."], "correct": 1, "category": "Tujuan/fungsi pembicara", "explanation": "Jawaban benar: opsi B — \"Dreaming serves multiple functions.\". Fokus pada alasan pembicara mengatakan sesuatu, bukan hanya isi literalnya."}]}, {"heading": "Ceramah 3 (contoh placeholder)", "passage": "The history of the printing press illustrates how a single invention can reshape a society. Before movable type, books were copied by hand, making them rare and expensive. Once the printing press spread across Europe, the cost of producing a book fell dramatically, and literacy rates began to rise as texts became more accessible. Some historians argue this shift contributed directly to the rapid spread of new scientific and religious ideas in the following centuries.", "questions": [{"q": "What is the talk mainly about?", "options": ["The invention of paper.", "The impact of the printing press.", "Modern publishing methods.", "The decline of literacy."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"The impact of the printing press.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "How were books produced before the printing press?", "options": ["Mass-printed in factories.", "Copied by hand.", "Carved into stone.", "Recorded orally."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Copied by hand.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What happened to book costs after the printing press spread?", "options": ["They increased.", "They stayed the same.", "They fell dramatically.", "They became free."], "correct": 2, "category": "Inferensi", "explanation": "Jawaban benar: opsi C — \"They fell dramatically.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "What do some historians credit the printing press with contributing to?", "options": ["The decline of religion.", "The spread of new ideas.", "The rise of oral tradition.", "A decrease in literacy."], "correct": 1, "category": "Tujuan/fungsi pembicara", "explanation": "Jawaban benar: opsi B — \"The spread of new ideas.\". Fokus pada alasan pembicara mengatakan sesuatu, bukan hanya isi literalnya."}]}], "partLabels": [{"before": 0, "label": "Part A — Short conversations (1-30)"}, {"before": 30, "label": "Part B — Longer conversations (31-38)"}, {"before": 32, "label": "Part C — Talks (39-50)"}]}, "structure": {"title": "Structure & written expression", "timeLimit": 1500, "groups": [{"heading": null, "passage": null, "questions": [{"q": "The committee ___ its decision by Friday afternoon.", "options": ["will announce", "announcing", "announce", "to announce"], "correct": 0, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi A — \"will announce\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "___ the weather improves, the trip will be postponed.", "options": ["Despite", "Unless", "Because of", "Although"], "correct": 1, "category": "Struktur paralel/gerund", "explanation": "Jawaban benar: opsi B — \"Unless\". Elemen-elemen yang disejajarkan dalam satu kalimat harus memiliki bentuk gramatikal yang sama."}]}, {"heading": null, "passage": null, "questions": [{"q": "Not only ___ the exam, but she also scored the highest in her class.", "options": ["she passed", "did she pass", "she did pass", "passing she"], "correct": 1, "category": "Klausa relatif", "explanation": "Jawaban benar: opsi B — \"did she pass\". Kata penghubung klausa relatif dipilih berdasarkan apakah ia merujuk pada orang, benda, waktu, atau tempat."}]}, {"heading": null, "passage": null, "questions": [{"q": "By the time the guests arrive, we ___ dinner.", "options": ["will finish", "will have finished", "finish", "are finishing"], "correct": 1, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi B — \"will have finished\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}, {"heading": null, "passage": null, "questions": [{"q": "___ of the two proposals is more cost-effective remains unclear.", "options": ["What", "Which", "That", "Whom"], "correct": 1, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi B — \"Which\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "The research team, along with its two advisors, ___ presenting the findings tomorrow.", "options": ["are", "is", "were", "have been"], "correct": 1, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi B — \"is\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "She would have attended the conference ___ she had known about it earlier.", "options": ["if", "unless", "when", "since"], "correct": 0, "category": "Struktur paralel/gerund", "explanation": "Jawaban benar: opsi A — \"if\". Elemen-elemen yang disejajarkan dalam satu kalimat harus memiliki bentuk gramatikal yang sama."}]}, {"heading": null, "passage": null, "questions": [{"q": "The museum, ___ was built in 1920, is currently under renovation.", "options": ["that", "which", "who", "where"], "correct": 1, "category": "Klausa relatif", "explanation": "Jawaban benar: opsi B — \"which\". Kata penghubung klausa relatif dipilih berdasarkan apakah ia merujuk pada orang, benda, waktu, atau tempat."}]}, {"heading": null, "passage": null, "questions": [{"q": "___ many students find the course difficult, few choose to drop it.", "options": ["Although", "Despite", "Because", "So that"], "correct": 0, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi A — \"Although\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}, {"heading": null, "passage": null, "questions": [{"q": "It is essential that every applicant ___ the required documents before the deadline.", "options": ["submits", "submit", "submitted", "submitting"], "correct": 1, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi B — \"submit\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "The new policy affects ___ employees hired after January.", "options": ["all", "every", "each", "much"], "correct": 0, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi A — \"all\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "Rarely ___ such a well-organized conference before.", "options": ["we have seen", "have we seen", "we saw", "did we saw"], "correct": 1, "category": "Struktur paralel/gerund", "explanation": "Jawaban benar: opsi B — \"have we seen\". Elemen-elemen yang disejajarkan dalam satu kalimat harus memiliki bentuk gramatikal yang sama."}]}, {"heading": null, "passage": null, "questions": [{"q": "The report, ___ with supporting data, convinced the board to approve funding.", "options": ["complete", "completing", "completed", "completes"], "correct": 2, "category": "Klausa relatif", "explanation": "Jawaban benar: opsi C — \"completed\". Kata penghubung klausa relatif dipilih berdasarkan apakah ia merujuk pada orang, benda, waktu, atau tempat."}]}, {"heading": null, "passage": null, "questions": [{"q": "___ the budget cuts, the department managed to complete the project on time.", "options": ["Despite", "Although", "Even though", "While"], "correct": 0, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi A — \"Despite\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}, {"heading": null, "passage": null, "questions": [{"q": "Neither the manager nor the employees ___ aware of the schedule change.", "options": ["was", "is", "were", "has been"], "correct": 2, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi C — \"were\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "The number of student have increased significantly this year.", "options": ["The number of", "student", "have increased", "this year"], "correct": 1, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi B — \"student\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "She is one of the student who was awarded a scholarship.", "options": ["one of the", "student", "who was awarded", "a scholarship"], "correct": 1, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi B — \"student\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "Each of the applicants are required to submit two references.", "options": ["Each of", "the applicants", "are required", "two references"], "correct": 2, "category": "Preposisi & idiom", "explanation": "Jawaban benar: opsi C — \"are required\". Preposisi dalam bahasa Inggris sering bersifat idiomatik dan perlu dihafal per frasa, bukan diterjemahkan langsung."}]}, {"heading": null, "passage": null, "questions": [{"q": "The data shows that most participants prefers the online format.", "options": ["The data shows", "that most participants", "prefers", "the online format"], "correct": 2, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi C — \"prefers\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}, {"heading": null, "passage": null, "questions": [{"q": "Despite of the heavy rain, the outdoor event proceeded as planned.", "options": ["Despite of", "the heavy rain", "proceeded as planned", "as planned"], "correct": 0, "category": "Struktur paralel/gerund", "explanation": "Jawaban benar: opsi A — \"Despite of\". Elemen-elemen yang disejajarkan dalam satu kalimat harus memiliki bentuk gramatikal yang sama."}]}, {"heading": null, "passage": null, "questions": [{"q": "The professor advised the students to finish their assignment before the deadline arrive.", "options": ["advised the students", "to finish their assignment", "before the deadline", "arrive"], "correct": 3, "category": "Pronomina", "explanation": "Jawaban benar: opsi D — \"arrive\". Kata ganti harus sesuai dengan fungsi gramatikalnya (subjek atau objek) dalam kalimat."}]}, {"heading": null, "passage": null, "questions": [{"q": "Having finished the report, the meeting was scheduled by the manager.", "options": ["Having finished the report", "the meeting", "was scheduled", "by the manager"], "correct": 0, "category": "Redundansi/kata ganda", "explanation": "Jawaban benar: opsi A — \"Having finished the report\". Struktur ini mengandung pengulangan makna yang tidak diperlukan dalam bahasa Inggris formal."}]}, {"heading": null, "passage": null, "questions": [{"q": "Neither of the solutions were effective in reducing the error rate.", "options": ["Neither of", "the solutions", "were effective", "in reducing"], "correct": 2, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi C — \"were effective\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "The committee discussed about the proposal for nearly two hours.", "options": ["discussed about", "the proposal", "for nearly", "two hours"], "correct": 0, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi A — \"discussed about\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "Every one of the machines need to be inspected before use.", "options": ["Every one of", "the machines", "need to be inspected", "before use"], "correct": 2, "category": "Preposisi & idiom", "explanation": "Jawaban benar: opsi C — \"need to be inspected\". Preposisi dalam bahasa Inggris sering bersifat idiomatik dan perlu dihafal per frasa, bukan diterjemahkan langsung."}]}, {"heading": null, "passage": null, "questions": [{"q": "The results were more significant than what researchers had expect.", "options": ["The results", "were more significant", "than what researchers", "had expect"], "correct": 3, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi D — \"had expect\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}, {"heading": null, "passage": null, "questions": [{"q": "Students who studies regularly tend to perform better on exams.", "options": ["Students", "who studies regularly", "tend to perform better", "on exams"], "correct": 1, "category": "Struktur paralel/gerund", "explanation": "Jawaban benar: opsi B — \"who studies regularly\". Elemen-elemen yang disejajarkan dalam satu kalimat harus memiliki bentuk gramatikal yang sama."}]}, {"heading": null, "passage": null, "questions": [{"q": "The city council is considering to build a new library downtown.", "options": ["is considering", "to build", "a new library", "downtown"], "correct": 1, "category": "Pronomina", "explanation": "Jawaban benar: opsi B — \"to build\". Kata ganti harus sesuai dengan fungsi gramatikalnya (subjek atau objek) dalam kalimat."}]}, {"heading": null, "passage": null, "questions": [{"q": "Although the budget was limited, but the team completed the project successfully.", "options": ["Although the budget", "was limited", "but the team completed", "successfully"], "correct": 2, "category": "Redundansi/kata ganda", "explanation": "Jawaban benar: opsi C — \"but the team completed\". Struktur ini mengandung pengulangan makna yang tidak diperlukan dalam bahasa Inggris formal."}]}, {"heading": null, "passage": null, "questions": [{"q": "The findings suggest that regular exercise improve overall health.", "options": ["The findings suggest", "that regular exercise", "improve", "overall health"], "correct": 2, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi C — \"improve\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "A large amount of students attended the seminar on climate change.", "options": ["A large amount of", "students attended", "the seminar", "on climate change"], "correct": 0, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi A — \"A large amount of\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "The report was wrote by a team of five researchers.", "options": ["The report", "was wrote", "by a team of", "five researchers"], "correct": 1, "category": "Preposisi & idiom", "explanation": "Jawaban benar: opsi B — \"was wrote\". Preposisi dalam bahasa Inggris sering bersifat idiomatik dan perlu dihafal per frasa, bukan diterjemahkan langsung."}]}, {"heading": null, "passage": null, "questions": [{"q": "It is important for a manager knowing how to delegate tasks.", "options": ["It is important", "for a manager", "knowing how to", "delegate tasks"], "correct": 2, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi C — \"knowing how to\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}, {"heading": null, "passage": null, "questions": [{"q": "The two companies agreed to merging their operations next year.", "options": ["The two companies", "agreed to merging", "their operations", "next year"], "correct": 1, "category": "Struktur paralel/gerund", "explanation": "Jawaban benar: opsi B — \"agreed to merging\". Elemen-elemen yang disejajarkan dalam satu kalimat harus memiliki bentuk gramatikal yang sama."}]}, {"heading": null, "passage": null, "questions": [{"q": "Between you and I, the proposal needs significant revisions.", "options": ["Between you and I", "the proposal", "needs significant", "revisions"], "correct": 0, "category": "Pronomina", "explanation": "Jawaban benar: opsi A — \"Between you and I\". Kata ganti harus sesuai dengan fungsi gramatikalnya (subjek atau objek) dalam kalimat."}]}, {"heading": null, "passage": null, "questions": [{"q": "The experiment results were more conclusive than the previous one.", "options": ["The experiment results", "were more conclusive", "than the previous", "one"], "correct": 2, "category": "Redundansi/kata ganda", "explanation": "Jawaban benar: opsi C — \"than the previous\". Struktur ini mengandung pengulangan makna yang tidak diperlukan dalam bahasa Inggris formal."}]}, {"heading": null, "passage": null, "questions": [{"q": "Each student must bring their own laptop and headphones to class tomorrow.", "options": ["Each student must", "bring their own", "laptop and headphones", "to class tomorrow"], "correct": 1, "category": "Kesesuaian subjek-kata kerja", "explanation": "Jawaban benar: opsi B — \"bring their own\". Subjek kalimat menentukan bentuk kata kerja yang benar — periksa apakah subjeknya tunggal atau jamak."}]}, {"heading": null, "passage": null, "questions": [{"q": "The manager insisted that the report is submitted by Friday.", "options": ["The manager insisted", "that the report", "is submitted", "by Friday"], "correct": 2, "category": "Bentuk kata (part of speech)", "explanation": "Jawaban benar: opsi C — \"is submitted\". Perhatikan jenis kata yang dibutuhkan pada posisi tersebut: kata benda, kata kerja, kata sifat, atau kata keterangan."}]}, {"heading": null, "passage": null, "questions": [{"q": "Scientists have discover a new species of frog in the rainforest.", "options": ["Scientists have discover", "a new species", "of frog", "in the rainforest"], "correct": 0, "category": "Preposisi & idiom", "explanation": "Jawaban benar: opsi A — \"Scientists have discover\". Preposisi dalam bahasa Inggris sering bersifat idiomatik dan perlu dihafal per frasa, bukan diterjemahkan langsung."}]}, {"heading": null, "passage": null, "questions": [{"q": "The lecture was both informative as well as engaging for the students.", "options": ["The lecture was", "both informative", "as well as", "engaging for the students"], "correct": 2, "category": "Artikel & kuantitas", "explanation": "Jawaban benar: opsi C — \"as well as\". Kata penentu jumlah harus sesuai dengan jenis kata benda yang mengikutinya (bisa dihitung atau tidak)."}]}], "partLabels": [{"before": 0, "label": "Structure (1-15)"}, {"before": 15, "label": "Written expression (16-40)"}]}, "reading": {"title": "Reading comprehension", "timeLimit": 3300, "groups": [{"heading": "Bacaan 1 — Terumbu karang (placeholder)", "passage": "Coral reefs, often called the rainforests of the sea, support roughly a quarter of all marine species despite covering less than one percent of the ocean floor. Rising sea temperatures have triggered widespread coral bleaching, a process in which corals expel the algae living in their tissues, causing them to turn white and become more vulnerable to disease. Researchers are now testing selective breeding programs that aim to produce coral strains more resistant to heat stress, though scientists caution that such programs cannot fully offset the pace of ocean warming. Some conservationists argue that reducing local pollution, which weakens coral immune responses, may buy valuable time while broader climate solutions are developed.", "questions": [{"q": "What is the main topic of the passage?", "options": ["The diversity of ocean species", "The threat of coral bleaching and possible responses", "The history of marine research", "Methods of ocean temperature measurement"], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"The threat of coral bleaching and possible responses\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "According to the passage, what happens during coral bleaching?", "options": ["Corals grow new algae.", "Corals expel algae and turn white.", "Corals sink to the ocean floor.", "Corals reproduce more quickly."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Corals expel algae and turn white.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What can be inferred about selective breeding programs?", "options": ["They have already solved coral bleaching.", "They are considered a complete solution.", "They may help but have limits.", "They are no longer being tested."], "correct": 2, "category": "Inferensi", "explanation": "Jawaban benar: opsi C — \"They may help but have limits.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "The word 'vulnerable' is closest in meaning to:", "options": ["resistant", "susceptible", "invisible", "abundant"], "correct": 1, "category": "Kosakata dalam konteks", "explanation": "Jawaban benar: opsi B — \"susceptible\". Cari sinonim yang paling pas dengan konteks kalimat, bukan makna kata yang paling umum."}, {"q": "What percentage of the ocean floor do reefs cover?", "options": ["About a quarter", "Less than one percent", "About half", "Nearly ten percent"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Less than one percent\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What do some conservationists suggest as a short-term measure?", "options": ["Stopping all fishing", "Reducing local pollution", "Relocating coral reefs", "Banning tourism"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Reducing local pollution\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Why does local pollution matter for coral health, according to the passage?", "options": ["It raises water temperature directly.", "It weakens coral immune responses.", "It attracts more algae.", "It has no real effect."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"It weakens coral immune responses.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "The phrase 'buy valuable time' most likely means:", "options": ["generate income", "delay a negative outcome temporarily", "waste resources", "permanently fix the problem"], "correct": 1, "category": "Rujukan/referensi", "explanation": "Jawaban benar: opsi B — \"delay a negative outcome temporarily\". Telusuri kembali ke frasa atau kata benda terdekat yang paling masuk akal untuk dirujuk."}, {"q": "What is the tone of the passage regarding breeding programs?", "options": ["Fully confident", "Cautiously optimistic", "Entirely dismissive", "Angry"], "correct": 1, "category": "Nada penulis", "explanation": "Jawaban benar: opsi B — \"Cautiously optimistic\". Perhatikan pilihan kata penulis untuk menentukan apakah nadanya netral, kritis, atau memuji."}, {"q": "Which of the following best restates the passage's main concern?", "options": ["Coral reefs are unimportant to ecosystems.", "Warming oceans threaten reefs faster than some solutions can address.", "Algae are harmful to coral under all conditions.", "Ocean temperatures have stopped rising."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Warming oceans threaten reefs faster than some solutions can address.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}]}, {"heading": "Bacaan 2 — Sejarah percetakan (placeholder)", "passage": "Before the invention of the printing press, books in Europe were copied by hand, a slow process that made written works rare and expensive. When Johannes Gutenberg introduced movable type in the fifteenth century, the cost of producing a book fell sharply, and texts that had once been confined to monasteries and royal courts became available to a much wider audience. Rising literacy rates followed, along with a surge in the circulation of new scientific and religious ideas. Some historians argue that without this technological shift, the pace of the Scientific Revolution and the Reformation would have been considerably slower.", "questions": [{"q": "What is the passage primarily about?", "options": ["The invention of paper", "The impact of the printing press on society", "The decline of monasteries", "Modern printing technology"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"The impact of the printing press on society\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "How were books produced before movable type?", "options": ["Mass-printed in factories", "Copied by hand", "Carved into stone tablets", "Recorded only orally"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Copied by hand\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What happened to book prices after Gutenberg's invention?", "options": ["They increased sharply", "They stayed the same", "They fell sharply", "They became free"], "correct": 2, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi C — \"They fell sharply\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Where were texts mainly kept before the printing press, according to the passage?", "options": ["Public libraries", "Monasteries and royal courts", "Private homes only", "Trading ports"], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Monasteries and royal courts\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What followed the wider availability of books?", "options": ["A decline in education", "Rising literacy rates", "Stricter censorship", "Fewer new ideas"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Rising literacy rates\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What do some historians argue about the printing press?", "options": ["It slowed the Scientific Revolution.", "It had no historical significance.", "It likely accelerated major intellectual movements.", "It caused the Reformation to fail."], "correct": 2, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi C — \"It likely accelerated major intellectual movements.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "The word 'confined' is closest in meaning to:", "options": ["expanded", "restricted", "translated", "publicized"], "correct": 1, "category": "Kosakata dalam konteks", "explanation": "Jawaban benar: opsi B — \"restricted\". Cari sinonim yang paling pas dengan konteks kalimat, bukan makna kata yang paling umum."}, {"q": "What can be inferred about pre-Gutenberg literacy?", "options": ["It was widespread among all classes.", "It was likely limited to a small privileged group.", "It was higher than after the printing press.", "It did not exist at all."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"It was likely limited to a small privileged group.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "The passage suggests the printing press mainly changed:", "options": ["how food was distributed", "how information was distributed", "how governments were elected", "how wars were fought"], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"how information was distributed\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What is the overall tone of the passage?", "options": ["Skeptical", "Informative and analytical", "Humorous", "Emotional"], "correct": 1, "category": "Nada penulis", "explanation": "Jawaban benar: opsi B — \"Informative and analytical\". Perhatikan pilihan kata penulis untuk menentukan apakah nadanya netral, kritis, atau memuji."}]}, {"heading": "Bacaan 3 — Ilmu tidur (placeholder)", "passage": "Sleep researchers have long debated why humans dream. One influential theory holds that dreaming helps consolidate memories, sorting the day's experiences into long-term storage while discarding irrelevant details. A competing theory suggests that dreams simulate threatening situations, allowing the brain to rehearse survival responses in a low-risk setting. Neither theory fully accounts for the wide variety of dream content reported by sleep study participants, which has led many researchers to conclude that dreaming likely serves several overlapping purposes rather than a single function.", "questions": [{"q": "What is the main subject of the passage?", "options": ["Sleep disorders", "Competing theories about why we dream", "How to interpret dream symbols", "The stages of sleep"], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Competing theories about why we dream\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "According to the memory consolidation theory, dreams help:", "options": ["erase all memories", "sort experiences into long-term storage", "prevent sleep", "increase daytime alertness"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"sort experiences into long-term storage\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What does the threat simulation theory propose?", "options": ["Dreams are meaningless noise.", "Dreams let the brain rehearse responses to danger.", "Dreams only occur during illness.", "Dreams block emotional memories."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Dreams let the brain rehearse responses to danger.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Why do many researchers now favor a multi-function view of dreaming?", "options": ["Because dream content varies so widely.", "Because dreaming has been proven pointless.", "Because only one theory has any support.", "Because dreams occur only in animals."], "correct": 0, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi A — \"Because dream content varies so widely.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "The word 'consolidate' is closest in meaning to:", "options": ["scatter", "strengthen and organize", "erase", "ignore"], "correct": 1, "category": "Kosakata dalam konteks", "explanation": "Jawaban benar: opsi B — \"strengthen and organize\". Cari sinonim yang paling pas dengan konteks kalimat, bukan makna kata yang paling umum."}, {"q": "What is implied about the two theories mentioned?", "options": ["They are identical.", "Each explains only part of the picture.", "One has been fully disproven.", "They apply only to children."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"Each explains only part of the picture.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "The passage suggests sleep study participants reported:", "options": ["identical dreams", "no dreams at all", "a wide variety of dream content", "only nightmares"], "correct": 2, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi C — \"a wide variety of dream content\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What is the tone of the passage?", "options": ["Dismissive", "Neutral and explanatory", "Alarmed", "Persuasive advertising"], "correct": 1, "category": "Nada penulis", "explanation": "Jawaban benar: opsi B — \"Neutral and explanatory\". Perhatikan pilihan kata penulis untuk menentukan apakah nadanya netral, kritis, atau memuji."}, {"q": "Which best restates the passage's conclusion?", "options": ["Dreaming has one clear, agreed-upon purpose.", "Dreaming probably serves multiple functions at once.", "Dreaming is unrelated to memory.", "Dreaming only happens in rare cases."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Dreaming probably serves multiple functions at once.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "The phrase 'low-risk setting' refers to:", "options": ["a dangerous real-world situation", "the safety of the dream state for rehearsal", "a laboratory experiment", "a type of therapy"], "correct": 1, "category": "Rujukan/referensi", "explanation": "Jawaban benar: opsi B — \"the safety of the dream state for rehearsal\". Telusuri kembali ke frasa atau kata benda terdekat yang paling masuk akal untuk dirujuk."}]}, {"heading": "Bacaan 4 — Perencanaan kota (placeholder)", "passage": "Urban planners designing public transit systems typically begin by mapping population density across a city, then overlay this data with existing traffic patterns to identify areas of chronic congestion. Interestingly, the most efficient transit routes are rarely straight lines; they often curve to serve the greatest possible number of residents per stop. Before construction begins, planners run computer simulations to estimate ridership, since building an underused line can waste enormous public resources. Critics of this data-driven approach argue that it sometimes overlooks smaller neighborhoods that fall just outside statistically dense zones, leaving some communities with limited transit access.", "questions": [{"q": "What is the passage mainly about?", "options": ["The history of city transit", "How planners design transit routes", "The cost of road construction", "Population growth trends"], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"How planners design transit routes\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What do planners typically map first?", "options": ["Traffic accidents", "Population density", "Construction budgets", "Weather patterns"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Population density\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Why are efficient routes rarely straight, according to the passage?", "options": ["Straight routes are illegal.", "They curve to serve more residents per stop.", "Curved routes are always cheaper.", "City maps require curves."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"They curve to serve more residents per stop.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Why do planners run ridership simulations before construction?", "options": ["To satisfy a legal requirement.", "To avoid wasting resources on an underused line.", "To select bus colors.", "To train new employees."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"To avoid wasting resources on an underused line.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What criticism is raised about the data-driven approach?", "options": ["It is too expensive to use.", "It may overlook smaller neighborhoods.", "It ignores traffic data entirely.", "It only works in small towns."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"It may overlook smaller neighborhoods.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "The word 'chronic' is closest in meaning to:", "options": ["occasional", "persistent", "minor", "surprising"], "correct": 1, "category": "Kosakata dalam konteks", "explanation": "Jawaban benar: opsi B — \"persistent\". Cari sinonim yang paling pas dengan konteks kalimat, bukan makna kata yang paling umum."}, {"q": "What can be inferred about neighborhoods just outside dense zones?", "options": ["They always receive priority transit access.", "They may end up underserved by transit planning.", "They are never included in any planning.", "They have no residents."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"They may end up underserved by transit planning.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "The passage suggests ridership simulations are used to:", "options": ["replace population maps entirely", "predict how many people will use a route", "determine bus ticket prices", "decide which colors to paint stations"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"predict how many people will use a route\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What is the overall tone of the passage?", "options": ["Purely celebratory", "Balanced, noting both benefits and limitations", "Angry and accusatory", "Comedic"], "correct": 1, "category": "Nada penulis", "explanation": "Jawaban benar: opsi B — \"Balanced, noting both benefits and limitations\". Perhatikan pilihan kata penulis untuk menentukan apakah nadanya netral, kritis, atau memuji."}, {"q": "Which statement best summarizes the passage?", "options": ["Transit planning is a simple, unchanging process.", "Data-driven transit planning has strengths but also potential blind spots.", "Curved routes are always inferior to straight ones.", "Population density has no role in transit planning."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Data-driven transit planning has strengths but also potential blind spots.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}]}, {"heading": "Bacaan 5 — Jalur perdagangan kuno (placeholder)", "passage": "Long before modern shipping networks, overland trade routes such as the Silk Road connected distant civilizations, carrying not only silk and spices but also ideas, technologies, and diseases across continents. Merchants rarely traveled the entire route themselves; instead, goods typically passed through a chain of regional traders, with each leg of the journey handled by people familiar with local terrain and customs. This relay system allowed goods to move thousands of kilometers even though no single trader ever completed the full journey. Archaeologists studying artifacts found far from their place of origin have used this evidence to reconstruct the extent and complexity of these ancient trade networks.", "questions": [{"q": "What is the main topic of the passage?", "options": ["Modern global shipping", "The structure and impact of ancient overland trade routes", "The history of silk production", "Diseases in ancient civilizations"], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"The structure and impact of ancient overland trade routes\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}, {"q": "What did trade routes like the Silk Road carry, besides goods?", "options": ["Only silk", "Ideas, technologies, and diseases", "Only spices", "Nothing besides physical goods"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Ideas, technologies, and diseases\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "How did merchants typically move goods along the route?", "options": ["A single trader completed the entire journey.", "Goods passed through a chain of regional traders.", "Goods were shipped by sea only.", "Goods were carried exclusively by government officials."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"Goods passed through a chain of regional traders.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "Why did the relay system work well, according to the passage?", "options": ["Each trader knew the local terrain and customs.", "All traders spoke the same language.", "Goods were transported by a single company.", "The route was very short."], "correct": 0, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi A — \"Each trader knew the local terrain and customs.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "How have archaeologists studied these ancient networks?", "options": ["By reading ancient shipping manifests only", "By examining artifacts found far from their origin", "By interviewing modern merchants", "By analyzing satellite images alone"], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"By examining artifacts found far from their origin\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "The word 'relay' in the passage is closest in meaning to:", "options": ["direct and unbroken", "passed along in stages", "sudden and unplanned", "digital"], "correct": 1, "category": "Kosakata dalam konteks", "explanation": "Jawaban benar: opsi B — \"passed along in stages\". Cari sinonim yang paling pas dengan konteks kalimat, bukan makna kata yang paling umum."}, {"q": "What can be inferred about individual traders on the route?", "options": ["Most traveled the entire route personally.", "Most handled only a portion of the journey.", "None of them ever left their hometown.", "They worked only with local goods."], "correct": 1, "category": "Inferensi", "explanation": "Jawaban benar: opsi B — \"Most handled only a portion of the journey.\". Jawaban ini tidak disebutkan secara langsung, tapi bisa disimpulkan dari petunjuk yang diberikan dalam teks."}, {"q": "Why might an artifact be found far from its place of origin?", "options": ["It was manufactured in multiple places.", "It traveled through the trade network over time.", "Archaeologists moved it during excavation.", "It was a coincidence unrelated to trade."], "correct": 1, "category": "Detail eksplisit", "explanation": "Jawaban benar: opsi B — \"It traveled through the trade network over time.\". Informasi ini disebutkan secara langsung, jadi carilah kalimat yang menyatakan hal serupa secara eksplisit."}, {"q": "What is the tone of the passage?", "options": ["Skeptical", "Informative", "Humorous", "Alarmed"], "correct": 1, "category": "Nada penulis", "explanation": "Jawaban benar: opsi B — \"Informative\". Perhatikan pilihan kata penulis untuk menentukan apakah nadanya netral, kritis, atau memuji."}, {"q": "Which best restates the passage's main idea?", "options": ["Ancient trade routes were simple and had little cultural impact.", "Ancient trade networks were complex systems that spread goods and ideas across vast distances.", "The Silk Road was used exclusively for silk.", "Archaeology cannot tell us about ancient trade."], "correct": 1, "category": "Ide utama", "explanation": "Jawaban benar: opsi B — \"Ancient trade networks were complex systems that spread goods and ideas across vast distances.\". Pilihan ini mencakup keseluruhan isi teks, bukan hanya satu detail kecil di dalamnya."}]}], "partLabels": []}};
+</script>
+<script>
+let currentSection = null;
+let currentAnswers = {};
+let timerInterval = null;
+let timeLeft = 0;
+let quizSubmitted = false;
+let pendingSection = null;
+let flatQuestions = [];
+
+function showMateri(key){
+  document.querySelectorAll('.tabbar button').forEach(b => b.classList.toggle('active', b.dataset.tab === key));
+  document.querySelectorAll('.tabpanel').forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+}
+showMateri('listening');
+
+function loadHistory(){
+  try{ return JSON.parse(localStorage.getItem('toefl_history') || '[]'); }
+  catch(e){ return []; }
+}
+function saveHistoryEntry(entry){
+  const h = loadHistory();
+  h.unshift(entry);
+  localStorage.setItem('toefl_history', JSON.stringify(h.slice(0,20)));
+  renderHistory();
+}
+function renderHistory(){
+  const h = loadHistory();
+  const body = document.getElementById('historyBody');
+  if(h.length === 0){
+    body.innerHTML = '<tr><td colspan="4" class="empty">Belum ada riwayat. Kerjakan satu bagian untuk mulai mencatat progres.</td></tr>';
+    return;
+  }
+  body.innerHTML = h.map(e => `<tr><td>${e.date}</td><td>${e.section}</td><td>${e.score}</td><td>${e.duration}</td></tr>`).join('');
+}
+
+function formatTime(s){
+  const m = Math.floor(s/60).toString().padStart(2,'0');
+  const sec = (s%60).toString().padStart(2,'0');
+  return m + ':' + sec;
+}
+
+function flattenSection(key){
+  const data = questionBank[key];
+  const flat = [];
+  data.groups.forEach(group => group.questions.forEach(q => flat.push(q)));
+  return flat;
+}
+
+function requestStart(key){
+  pendingSection = key;
+  const data = questionBank[key];
+  const total = flattenSection(key).length;
+  document.getElementById('modalTitle').textContent = `Siap mengerjakan ${data.title}?`;
+  document.getElementById('modalCount').textContent = total;
+  document.getElementById('modalDuration').textContent = formatTime(data.timeLimit);
+  document.getElementById('readyModal').classList.add('active');
+}
+function cancelStart(){
+  pendingSection = null;
+  document.getElementById('readyModal').classList.remove('active');
+}
+function confirmStart(){
+  const key = pendingSection;
+  document.getElementById('readyModal').classList.remove('active');
+  if(key) startSection(key);
+}
+
+function startSection(key){
+  currentSection = key;
+  currentAnswers = {};
+  quizSubmitted = false;
+  clearInterval(timerInterval);
+
+  document.querySelectorAll('.picker button').forEach(b => b.classList.toggle('active', b.dataset.sec === key));
+  document.getElementById('resultBox').classList.remove('active');
+
+  const data = questionBank[key];
+  flatQuestions = flattenSection(key);
+
+  document.getElementById('quizLabel').textContent = `${data.title} — ${flatQuestions.length} soal`;
+  document.getElementById('quizFrame').classList.add('active');
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').textContent = 'Kumpulkan jawaban';
+
+  let html = '';
+  let counter = 0;
+  data.groups.forEach(group => {
+    const label = (data.partLabels || []).find(p => p.before === counter);
+    if(label) html += `<div class="part-label">${label.label}</div>`;
+    if(group.heading) html += `<h5 class="group-heading">${group.heading}</h5>`;
+    if(group.passage) html += `<div class="passage">${group.passage.replace(/</g,'&lt;')}</div>`;
+
+    group.questions.forEach(item => {
+      const qi = counter;
+      counter++;
+      html += `
+        <div class="question" id="q-wrap-${qi}">
+          <div class="qtext">
+            <span class="qn">${(qi+1).toString().padStart(2,'0')}</span>
+            <span>${item.q}</span>
+            <span class="cat-tag" id="cat-${qi}">${item.category}</span>
+          </div>
+          <div class="options">
+            ${item.options.map((opt, oi) => `
+              <div class="option" data-q="${qi}" data-o="${oi}" onclick="selectOption(${qi},${oi})">
+                <span class="ov">${String.fromCharCode(65+oi)}</span><span>${opt}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="explain" id="explain-${qi}">${item.explanation}</div>
+        </div>`;
+    });
+  });
+  document.getElementById('questionList').innerHTML = html;
+
+  updateProgress();
+  timeLeft = data.timeLimit;
+  document.getElementById('timer').classList.remove('low');
+  updateTimerDisplay();
+  timerInterval = setInterval(tick, 1000);
+
+  document.getElementById('quizFrame').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function tick(){
+  timeLeft--;
+  if(timeLeft <= 60) document.getElementById('timer').classList.add('low');
+  if(timeLeft <= 0){
+    clearInterval(timerInterval);
+    timeLeft = 0;
+    if(!quizSubmitted) submitQuiz();
+  }
+  updateTimerDisplay();
+}
+function updateTimerDisplay(){
+  document.getElementById('timer').textContent = formatTime(Math.max(timeLeft,0));
+}
+
+function selectOption(qi, oi){
+  if(quizSubmitted) return;
+  currentAnswers[qi] = oi;
+  document.querySelectorAll(`.option[data-q="${qi}"]`).forEach(el => {
+    el.classList.toggle('selected', parseInt(el.dataset.o) === oi);
+  });
+  updateProgress();
+}
+
+function updateProgress(){
+  const total = flatQuestions.length;
+  const answered = Object.keys(currentAnswers).length;
+  document.getElementById('progressText').textContent = `${answered} / ${total} dijawab`;
+}
+
+function submitQuiz(){
+  if(quizSubmitted) return;
+  quizSubmitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').textContent = 'Sudah dikumpulkan';
+
+  const data = questionBank[currentSection];
+  let correctCount = 0;
+  const catStats = {};
+
+  flatQuestions.forEach((item, qi) => {
+    const isCorrect = currentAnswers[qi] === item.correct;
+    if(isCorrect) correctCount++;
+
+    if(!catStats[item.category]) catStats[item.category] = {correct:0, total:0};
+    catStats[item.category].total++;
+    if(isCorrect) catStats[item.category].correct++;
+
+    document.querySelectorAll(`.option[data-q="${qi}"]`).forEach(el => {
+      const oi = parseInt(el.dataset.o);
+      if(oi === item.correct) el.classList.add('correct');
+      else if(currentAnswers[qi] === oi) el.classList.add('incorrect');
+    });
+    document.getElementById(`cat-${qi}`).classList.add('show');
+    document.getElementById(`explain-${qi}`).classList.add('show');
+  });
+
+  const elapsed = data.timeLimit - timeLeft;
+  document.getElementById('scoreText').textContent = `${correctCount}/${flatQuestions.length}`;
+  document.getElementById('resultDetail').textContent = `Diselesaikan dalam ${formatTime(elapsed)}. Pembahasan tiap soal sudah tampil di bawah lembar jawaban.`;
+
+  const weakEntries = Object.entries(catStats).map(([cat, s]) => ({
+    cat, correct: s.correct, total: s.total, pct: s.total ? Math.round((s.correct/s.total)*100) : 0
+  })).sort((a,b) => a.pct - b.pct);
+
+  document.getElementById('weaknessList').innerHTML = weakEntries.map(w => `
+    <div class="weak-row">
+      <span class="wname">${w.cat}</span>
+      <span class="weak-bar"><span class="weak-bar-fill ${w.pct < 60 ? 'low' : ''}" style="width:${w.pct}%"></span></span>
+      <span class="wscore">${w.correct}/${w.total}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('resultBox').classList.add('active');
+
+  saveHistoryEntry({
+    date: new Date().toLocaleDateString('id-ID', {day:'2-digit', month:'short', year:'numeric'}),
+    section: data.title,
+    score: `${correctCount}/${flatQuestions.length}`,
+    duration: formatTime(elapsed)
+  });
+
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+renderHistory();
+</script>
+
+</body>
+</html>
